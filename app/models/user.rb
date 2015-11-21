@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   has_many :subs
 
+  has_many :posts,
+    foreign_key: :author_id
+
   attr_reader :password
 
   def self.generate_session_token
