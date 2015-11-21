@@ -1,0 +1,29 @@
+<h1>ALL SUB-REDDITS</h1>
+
+<table>
+  <tr>
+    <td>
+      <b>Title</b>
+    </td>
+    <td>
+      <b>Moderator</b>
+    </td>
+    <td>
+      <b>Description</b>
+    </td>
+  </tr>
+  <% @subs.each do |sub|  %>
+  <tr>
+    <td>
+      <%= sub.title %>
+    </td>
+    <td>
+      <%= sub.moderator.username %>
+    </td>
+    <td>
+      <%= sub.description.first(30) %>
+    </td>
+  </tr>
+  <% end %>
+
+</table>

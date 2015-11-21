@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token!
 
+  has_many :subs
+
   attr_reader :password
 
   def self.generate_session_token

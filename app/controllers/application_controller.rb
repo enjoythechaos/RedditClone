@@ -24,4 +24,19 @@ class ApplicationController < ActionController::Base
     current_user.reset_session_token!
     session[:session_token] = nil
   end
+
+  def require_login
+    unless logged_in?
+      flash[:errors] = ["You must be logged in to perform this action."]
+      redirect_to new_sessions_url
+    end
+  end
+
+  def require_moderator
+    sub = Sub.find(params[:id])
+    unless sub.moderator == current_user
+      flash[:errors] = ["You can't edit this unless you're the moderator.  Please try again."]
+      redirect_to sub_url(sub)
+    end
+  end
 end

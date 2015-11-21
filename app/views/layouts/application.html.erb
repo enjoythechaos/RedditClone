@@ -8,13 +8,14 @@
 </head>
 <body>
 
-<%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
-
 <% if logged_in? %>
 <%= button_to "Sign Out", "/sessions", method: :delete %>
 <!-- <button type="button" name="sign out">Sign Out</button> -->
 <% else %>
 <% end %>
+
+<%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+<%= flash[:notices].join("<br>").html_safe if flash[:notices] %>
 
 <%= yield %>
 
